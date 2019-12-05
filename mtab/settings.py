@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'patient',
     'clinical',
     'ParaClininical',
+    'physicing',
+    'Accounting',
+    'Services',
     ]
 
 MIDDLEWARE = [

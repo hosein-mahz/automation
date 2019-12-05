@@ -1,5 +1,6 @@
 from django.db import models
 from patient.models import Patient
+from physicing.models import physician
 
 CLINICAL_RECORD_CHOISE = [
     (1, 'telorder'),
@@ -9,7 +10,7 @@ CLINICAL_RECORD_CHOISE = [
 
 class Clinical_record(models.Model):
     patient_id      = models.ForeignKey(Patient, null=True ,on_delete =True)
-    # physician_id  = models.ForeignKey(Physician, null=True ,on_delete =True)
+    physician_id    = models.ForeignKey(Physician, null=True ,on_delete =True)
     category        = models.IntegerField(choices = CLINICAL_RECORD_CHOISE)
     description     = models.TextField(verbose_name = None )
     data            = models.DateTimeField(auto_now =True)
