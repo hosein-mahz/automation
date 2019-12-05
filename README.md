@@ -4,7 +4,7 @@
 
 * Patient
 
-    <!-- * Patient -->
+    * Patient
         * name
         * family
         * national_code
@@ -40,12 +40,12 @@
     | 1 | tehran, ekbatan | * | * |
     | 1 | tehran, ekbatan |  karaj, golshahr | tehran, satarkhan |
 
-    <!-- * Refrence -->
+    * Refrence
         * patient_id
         * name
         * phone
 
-    <!-- * Record -->
+    * Record
         * patient_id
         * key
         * value
@@ -141,4 +141,5 @@
         * ... 
 
 * Services
-> type (laser, disk, RF, epidoroscopy, endoscopy)
+    * Services    
+        * type (laser, disk, RF, epidoroscopy, endoscopy)
