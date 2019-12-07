@@ -26,6 +26,7 @@ class Contact (models.Model):
     patient_id  = models.ForeignKey(Patient, null=True ,on_delete=True)
     kay         = models.IntegerField(choices=CONTACT_CHOISE)
     value       = models.TextField(verbose_name= None )
+    
 class Refrence (models.Model):
     patient_id  = models.ForeignKey(Patient, null =True,on_delete  =True )
     name        = models.CharField(max_length=150)
@@ -44,9 +45,9 @@ RECORD_CHOISE = [
 
 class Record (models.Model):
     patient_id  = models.ForeignKey(Patient, null =True ,on_delete=True )
-    time        = models.DateTimeField(auto_now=True)
     key         = models.IntegerField(max_length=160, choices=RECORD_CHOISE)
     value       = models.TextField(verbose_name= None )
+    time        = models.DateTimeField(auto_now=True)
     start_date  = models.DateTimeField(auto_now=True)
     end_date    = models.DateTimeField(auto_now=True)
 
