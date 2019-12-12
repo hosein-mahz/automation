@@ -3,6 +3,9 @@ from django.core import serializers
 from patient.models import Refrence
 from patient.models import Patient
 from json import loads
+from patient.models import Refrence
+from rest_framework import viewsets
+from patient.serializers import RefrenceSerializer
 
 
 
@@ -53,7 +56,8 @@ def create(request):
             _Refrence = Refrence(
                 patient_id = data['patient_id'],
                 name       = data['name'],
-                phone      = data['phone'],
+                phone      = data['phone']
+            )
             _Contact.save()
             return JsonResponse({'message':'successful create new Refrence'}, safe=False)
         except:
@@ -81,3 +85,9 @@ def update(request, _id):
             return JsonResponse({'message': 'successfull updating'}, safe=False)
         except : 
             return JsonResponse({'message': 'unsuccessfull updating'}, safe=False)
+
+
+
+class RefrenceViewSet(viewsets.ModelViewSet):
+    queryset = Refrence.objects.all().order_by('-name')
+    serializer_class = RefrenceSerializer

@@ -28,7 +28,7 @@ class Contact (models.Model):
     value       = models.TextField(verbose_name= None )
     
 class Refrence (models.Model):
-    patient_id  = models.ForeignKey(Patient, null =True,on_delete  =True )
+    patient_id  = models.ForeignKey(Patient, null=True, on_delete=True )
     name        = models.CharField(max_length=150)
     phone       = models.CharField(max_length=30)
     # dare = models.CharField(max_length=30)

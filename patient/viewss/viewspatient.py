@@ -1,7 +1,10 @@
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
-from .models import Patient
+from patient.models import Patient
 from json import loads
+from patient.models import Patient
+from rest_framework import viewsets
+from patient.serializers import PatientSerializer
 
 def convertToJson(_QuerySet):
     g = serializers.serialize("json", _QuerySet)
@@ -76,3 +79,6 @@ def update(request, _id):
         except : 
             return JsonResponse({'message': 'unsuccessfull updating'}, safe=False)
 
+class patientViewSet(viewsets.ModelViewSet):
+    queryset = Patient.objects.all().order_by('-name')
+    serializer_class = PatientSerializer
