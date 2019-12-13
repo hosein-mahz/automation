@@ -13,8 +13,8 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
             'gender'
             ]
 
-
 class ContactSerializer(serializers.HyperlinkedModelSerializer):
+    patient_id = serializers.RelatedField(source='Patient', read_only=True)
     class Meta:
         model = Contact
         fields = [
@@ -35,13 +35,15 @@ class RefrenceSerializer(serializers.HyperlinkedModelSerializer):
             'name',
             'phone',
             ]
-
+    
 class RecordSerializer(serializers.HyperlinkedModelSerializer):
+    patient_id = serializers.RelatedField(source='Patient', read_only=True)
     class Meta:
         model = Record
         fields = [
             'patient_id', 
-            'key','value',
+            'key',
+            'value',
             'time',
             'start_date',
             'end_date'

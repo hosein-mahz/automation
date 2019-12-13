@@ -86,7 +86,7 @@ def update(request, _id):
         except : 
             return JsonResponse({'message': 'unsuccessfull updating'}, safe=False)
 
-
+# /////////////////////////////////////////////////////
 
 class RefrenceViewSet(viewsets.ModelViewSet):
     queryset = Refrence.objects.all().order_by('-name')

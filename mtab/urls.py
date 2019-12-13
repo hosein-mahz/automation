@@ -1,22 +1,42 @@
-from django.contrib  import admin
-from django.urls import include, path
-from rest_framework import routers
-from patient.viewss.viewsRefrence import RefrenceViewSet
-from patient.viewss.viewspatient import patientViewSet
-# from patient.viewss  import viewspatient as views_viewspatient
-# from patient.viewss  import viewsContact as views_viewsContact
-# from patient.viewss  import viewsRecord as views_viewsRecord
-# from patient.viewss  import viewsRefrence as views_viewsRefrence
+# from patient.viewses  import viewspatient as views_viewspatient
+# from patient.viewses  import viewsContact as views_viewsContact
+# from patient.viewses  import viewsRecord as views_viewsRecord
+# from patient.viewses  import viewsRefrence as views_viewsRefrence
+
+from django.contrib                import admin
+from django.urls                   import include, path
+from rest_framework                import routers
+from patient.viewses.viewsRefrence  import RefrenceViewSet
+from patient.viewses.viewspatient   import patientViewSet
+from patient.viewses.viewsRecord    import RecordViewSet
+from patient.viewses.viewsContact   import ContactViewSet
+
+from physicing.views                import physicingViewSet
+
+from clinical.viewses.viewsClinical_record import Clinical_recordViewSet
+from clinical.viewses.viewsmedecine_order import medecine_orderViewSet
+from clinical.viewses.viewstreatment_order import treatment_orderViewSet
+
+from ParaClininical.viewses.viewsOperation_record import Operation_recordViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'refrence', RefrenceViewSet)
 router.register(r'patient', patientViewSet)
-# router.register(r'groups', views.GroupViewSet)
+router.register(r'record', RecordViewSet)
+router.register(r'contact', ContactViewSet)
 
+router.register(r'physicing', physicingViewSet)
+
+router.register(r'Clinical_Record',Clinical_recordViewSet )
+router.register(r'Medecine_Order',medecine_orderViewSet   )
+router.register(r'Treatment_Order',treatment_orderViewSet )
+
+router.register(r'Operation_record',Operation_recordViewSet )
 
 urlpatterns = [
-    path('', include(router.urls))
-    # path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('admin/', admin.site.urls)
     # url(r'^api-auth/', include('rest_framework.urls'))
 
     # # 

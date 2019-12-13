@@ -45,7 +45,7 @@ RECORD_CHOISE = [
 
 class Record (models.Model):
     patient_id  = models.ForeignKey(Patient, null =True ,on_delete=True )
-    key         = models.IntegerField(max_length=160, choices=RECORD_CHOISE)
+    key         = models.IntegerField(choices=RECORD_CHOISE)
     value       = models.TextField(verbose_name= None )
     time        = models.DateTimeField(auto_now=True)
     start_date  = models.DateTimeField(auto_now=True)

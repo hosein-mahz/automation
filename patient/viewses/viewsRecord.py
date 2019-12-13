@@ -1,8 +1,11 @@
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
-from patient.models import Contact
+from patient.models import Record
 from patient.models import Patient
 from json import loads
+from patient.models import Refrence
+from rest_framework import viewsets
+from patient.serializers import RecordSerializer
 
 
 
@@ -28,9 +31,9 @@ def helperId(_object):
 # /////////////////////////////////////////////////////
 
 def getAll(request):
-    data = convertToJson(Contact.objects.all())
+    data = convertToJson(Record.objects.all())
     for x in data:
-        l = convertToJson(Contact.objects.get(pk=x['pk']).Patient_set.all() )
+        l = convertToJson(Record.objects.get(pk=x['pk']).Patient_set.all() )
         l = helperId(l)
         x['fields']['Patient'] = []
         for y in l:
@@ -40,7 +43,7 @@ def getAll(request):
 
 
 def getSingle(request, _id):
-    data = convertToJson( Contact.objects.get(id=_id) )
+    data = convertToJson( Record.objects.get(id=_id) )
     data[0] = helperId(data[0])
     return JsonResponse(data[0]['fields'], safe=False)
 
@@ -50,12 +53,16 @@ def create(request):
             data = loads(request.body)
             if data['name'] == '' or hasattr(data, 'name') :
                 return JsonResponse({'message':'unsuccessful createing'}, safe=False)
-            _Contact = Contact(
-                patient_id= data['patient_id'],
-                kay = data['kay'],
-                value = data['value'],
+                _Record = Record(
+                patient_id  = data['patient_id'],
+                kay         = data['kay'],
+                value       = data['value'],
+                time        = data['time'],
+                start_date  = data['end_date'],
+                end_date    = data['end_date'],
+                )
             _Contact.save()
-            return JsonResponse({'message':'successful create new Contact'}, safe=False)
+            return JsonResponse({'message':'successful create new Record'}, safe=False)
         except:
             return JsonResponse({'message':'unsuccessful createing'}, safe=False)
     return JsonResponse({'message': 'most use POST method'}, safe=False)
@@ -63,7 +70,7 @@ def create(request):
 def delete(request, _id): 
     if request.method == 'DELETE':
         try:
-            Contact.objects.filter(pk=_id).delete()
+            Record.objects.filter(pk=_id).delete()
             return JsonResponse({'message': 'successfull deleting'}, safe=False)
         except:
             return JsonResponse({'message': 'unsuccessfull deleting'}, safe=False)
@@ -73,12 +80,19 @@ def update(request, _id):
     if request.method == 'PUT':
         try:
             data = loads(request.body)
-            Contact.objects.filter(id=_id).update(
-                patient_id= data['patient_id'],
-                kay = data['kay'],
-                value = data['value'],   
+            Record.objects.filter(id=_id).update(
+                patient_id  = data['patient_id'],
+                kay         = data['kay'],
+                value       = data['value'],
+                time        = data['time'],
+                start_date  = data['end_date'],
+                end_date    = data['end_date'],
             )
             return JsonResponse({'message': 'successfull updating'}, safe=False)
         except : 
             return JsonResponse({'message': 'unsuccessfull updating'}, safe=False)
 
+# /////////////////////////////////////////////////////
+class RecordViewSet(viewsets.ModelViewSet):
+    queryset = Record.objects.all().order_by('-time')
+    serializer_class = RecordSerializer

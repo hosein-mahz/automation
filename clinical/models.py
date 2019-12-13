@@ -1,22 +1,22 @@
-from django.db import models
 from patient.models import Patient
+from django.db import models
 from physicing.models import physician
 
 CLINICAL_RECORD_CHOISE = [
     (1, 'telorder'),
     (2, 'visit'),
-    (2, 'tele-medecine'),
+    (3, 'tele-medecine'),
 ]
 
 class Clinical_record(models.Model):
     patient_id      = models.ForeignKey(Patient, null=True ,on_delete =True)
-    physician_id    = models.ForeignKey(Physician, null=True ,on_delete =True)
+    physician_id    = models.ForeignKey(physician, null=True ,on_delete =True)
     category        = models.IntegerField(choices = CLINICAL_RECORD_CHOISE)
     description     = models.TextField(verbose_name = None )
     data            = models.DateTimeField(auto_now =True)
 
-    class Meta:
-        ordering = ('data')
+    # class Meta:
+    #     ordering = ('data')
 
     def __str__(self):
         return self.category
@@ -29,8 +29,8 @@ class medecine_order(models.Model):
     qty                 = models.IntegerField(verbose_name = None )
     description         = models.TextField(verbose_name = None )
 
-    class Meta:
-        ordering = ('Clinical_record_id')
+    # class Meta:
+    #     ordering = ('Clinical_record_id')
 
     # def __str__(self):
     #     return (ops_id)
@@ -44,8 +44,8 @@ class treatment_order(models.Model):
     value               = models.TextField(verbose_name = None )
     description         = models.TextField(verbose_name = None )
     
-    class Meta:
-        ordering = ('key')
+    # class Meta:
+    #     ordering = ('key')
 
     def __str__(self):
         return self.key
