@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'clinical',
     'ParaClininical',
     'physicing',
-    # 'Accounting',
+    'Accounting',
     'Services',
     ]
 

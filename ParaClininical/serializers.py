@@ -28,7 +28,7 @@ class Service_listSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             'service_id', 
             'qty',
-            'description '
+            'description'
             ]
 
 class Medecine_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -42,7 +42,7 @@ class Medecine_orderSerializer(serializers.HyperlinkedModelSerializer):
             # ' medecine_id', 
             'dose',
             'qty',
-            'description '
+            'description'
             ]
             
 class Classtreatment_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -50,13 +50,13 @@ class Classtreatment_orderSerializer(serializers.HyperlinkedModelSerializer):
     # service_id = serializers.RelatedField(source='service', read_only=True)
     
     class Meta:
-        model = Medecine_order
+        model = Classtreatment_order
         fields = [
             'Operation_record_id',
             # 'medecine_id', 
-            'dose',
+            'key',
             'value',
-            'description '
+            'description'
             ]
 
 class Consumable_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -69,7 +69,7 @@ class Consumable_orderSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             # 'consumable_id', 
             'qty',
-            'description '
+            'description'
             ]
             
 class device_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -81,7 +81,7 @@ class device_orderSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             'title', 
             'qty',
-            'description '
+            'description'
             ]
 
 class HotelingSerializer(serializers.HyperlinkedModelSerializer):
@@ -93,5 +93,5 @@ class HotelingSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             'title', 
             'qty',
-            'description '
+            'description'
             ]

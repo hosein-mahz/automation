@@ -3,9 +3,9 @@
 # from patient.viewses  import viewsRecord as views_viewsRecord
 # from patient.viewses  import viewsRefrence as views_viewsRefrence
 
-from django.contrib                import admin
-from django.urls                   import include, path
-from rest_framework                import routers
+from django.contrib                 import admin
+from django.urls                    import include, path
+from rest_framework                 import routers
 from patient.viewses.viewsRefrence  import RefrenceViewSet
 from patient.viewses.viewspatient   import patientViewSet
 from patient.viewses.viewsRecord    import RecordViewSet
@@ -18,7 +18,15 @@ from clinical.viewses.viewsmedecine_order import medecine_orderViewSet
 from clinical.viewses.viewstreatment_order import treatment_orderViewSet
 
 from ParaClininical.viewses.viewsOperation_record import Operation_recordViewSet
+from ParaClininical.viewses.viewsService_list import Service_listViewSet
+from ParaClininical.viewses.viewsMedecine_order import Medecine_orderViewSet
+from ParaClininical.viewses.viewsClasstreatment_order import Classtreatment_orderViewSet
+from ParaClininical.viewses.viewsConsumable_order import Consumable_orderViewSet
+from ParaClininical.viewses.viewsdevice_order import device_orderViewSet
+from ParaClininical.viewses.viewsHoteling import HotelingViewSet
 
+from Services.views                import ServicesViewSet
+from Accounting.views              import InvoiceViewSet
 
 router = routers.DefaultRouter()
 router.register(r'refrence', RefrenceViewSet)
@@ -29,10 +37,20 @@ router.register(r'contact', ContactViewSet)
 router.register(r'physicing', physicingViewSet)
 
 router.register(r'Clinical_Record',Clinical_recordViewSet )
-router.register(r'Medecine_Order',medecine_orderViewSet   )
+router.register(r'Medecine_Order' ,medecine_orderViewSet  )
 router.register(r'Treatment_Order',treatment_orderViewSet )
 
 router.register(r'Operation_record',Operation_recordViewSet )
+router.register(r'Service_list',Service_listViewSet )
+router.register(r'Medecine_order',Medecine_orderViewSet )
+router.register(r'Classtreatment_order',Classtreatment_orderViewSet )
+router.register(r'Consumable_order',Consumable_orderViewSet )
+router.register(r'device_order',device_orderViewSet )
+router.register(r'Hoteling',HotelingViewSet )
+
+router.register(r'Services',ServicesViewSet )
+
+router.register(r'Accounting',InvoiceViewSet )
 
 urlpatterns = [
     path('', include(router.urls)),
