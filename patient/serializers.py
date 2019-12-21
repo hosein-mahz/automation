@@ -10,7 +10,8 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
             'family', 
             'national_code', 
             'birthday',
-            'gender'
+            'gender',
+            'id'
             ]
 
 class ContactSerializer(serializers.HyperlinkedModelSerializer):
@@ -20,7 +21,8 @@ class ContactSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'patient_id',
             'kay',
-            'value'
+            'value',
+            'id'
             ]
 
 class RefrenceSerializer(serializers.HyperlinkedModelSerializer):
@@ -34,6 +36,7 @@ class RefrenceSerializer(serializers.HyperlinkedModelSerializer):
             'patient_id', 
             'name',
             'phone',
+            'id'
             ]
     
 class RecordSerializer(serializers.HyperlinkedModelSerializer):
@@ -46,7 +49,8 @@ class RecordSerializer(serializers.HyperlinkedModelSerializer):
             'value',
             'time',
             'start_date',
-            'end_date'
+            'end_date',
+            'id'
             ]
 
 

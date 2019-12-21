@@ -9,7 +9,6 @@ class InvoiceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Invoice
         fields = [
-            # 'physician_id',
-            # 'patient_id', 
-            'Operation_record_id'
+            'Operation_record_id',
+            'id'
             ]

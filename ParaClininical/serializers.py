@@ -15,7 +15,8 @@ class Operation_recordSerializer(serializers.HyperlinkedModelSerializer):
             'physician_id',
             'patient_id', 
             'title',
-            'data'
+            'data',
+            'id'
             ]
 
 class Service_listSerializer(serializers.HyperlinkedModelSerializer):
@@ -28,7 +29,8 @@ class Service_listSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             'service_id', 
             'qty',
-            'description'
+            'description',
+            'id'
             ]
 
 class Medecine_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -42,7 +44,8 @@ class Medecine_orderSerializer(serializers.HyperlinkedModelSerializer):
             # ' medecine_id', 
             'dose',
             'qty',
-            'description'
+            'description',
+            'id'
             ]
             
 class Classtreatment_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -56,7 +59,8 @@ class Classtreatment_orderSerializer(serializers.HyperlinkedModelSerializer):
             # 'medecine_id', 
             'key',
             'value',
-            'description'
+            'description',
+            'id'
             ]
 
 class Consumable_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -69,7 +73,8 @@ class Consumable_orderSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             # 'consumable_id', 
             'qty',
-            'description'
+            'description',
+            'id'
             ]
             
 class device_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -81,7 +86,8 @@ class device_orderSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             'title', 
             'qty',
-            'description'
+            'description',
+            'id'
             ]
 
 class HotelingSerializer(serializers.HyperlinkedModelSerializer):
@@ -93,5 +99,6 @@ class HotelingSerializer(serializers.HyperlinkedModelSerializer):
             'Operation_record_id',
             'title', 
             'qty',
-            'description'
+            'description',
+            'id'
             ]

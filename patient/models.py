@@ -10,8 +10,9 @@ class Patient (models.Model):
     national_code  = models.CharField(max_length=15)
     birthday       = models.DateTimeField(auto_now=True)
     gender         = models.IntegerField(choices=PATIENT_CHOISE)
-    class Meta:
-        ordering = ('name',)
+    # id             = models.
+    # class Meta:
+    #     ordering = ('name')
 
     def __str__(self):
         return self.name 
@@ -23,7 +24,7 @@ CONTACT_CHOISE = [
 ]
 
 class Contact (models.Model):
-    patient_id  = models.ForeignKey(Patient, null=True ,on_delete=True)
+    patient_id  = models.ForeignKey(Patient, null=True ,on_delete=models.CASCADE)
     kay         = models.IntegerField(choices=CONTACT_CHOISE)
     value       = models.TextField(verbose_name= None )
     

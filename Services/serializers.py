@@ -9,8 +9,7 @@ class ServicesSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Services
-        fields = [
-            # 'physician_id',
-            # 'patient_id', 
-            'category'
+        fields = [   
+            'category',
+            'id'
             ]

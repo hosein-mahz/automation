@@ -14,7 +14,8 @@ class Clinical_recordSerializer(serializers.HyperlinkedModelSerializer):
             'physician_id', 
             'category', 
             'description',
-            'data'
+            'data',
+            'id'
             ]
 
 
@@ -30,7 +31,8 @@ class medecine_orderSerializer(serializers.HyperlinkedModelSerializer):
             'patient_id', 
             'dose',
             'qty',
-            'description'
+            'description',
+            'id'
             ]
 
 class treatment_orderSerializer(serializers.HyperlinkedModelSerializer):
@@ -44,5 +46,6 @@ class treatment_orderSerializer(serializers.HyperlinkedModelSerializer):
             'patient_id', 
             'key',
             'value',
-            'description'
+            'description',
+            'id'
             ]

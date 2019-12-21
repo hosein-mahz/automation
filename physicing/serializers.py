@@ -7,5 +7,6 @@ class physicianSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'name',
             'degree', 
-            'expert', 
+            'expert',
+            'id' 
             ]
