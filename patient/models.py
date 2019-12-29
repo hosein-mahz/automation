@@ -24,12 +24,12 @@ CONTACT_CHOISE = [
 ]
 
 class Contact (models.Model):
-    patient_id  = models.ForeignKey(Patient, null=True ,on_delete=models.CASCADE)
+    patient_id  = models.ForeignKey(Patient,related_name="contact", null=True ,on_delete=models.CASCADE)
     kay         = models.IntegerField(choices=CONTACT_CHOISE)
     value       = models.TextField(verbose_name= None )
     
 class Refrence (models.Model):
-    patient_id  = models.ForeignKey(Patient, null=True, on_delete=True )
+    patient_id  = models.ForeignKey(Patient,related_name='refrence', null=True, on_delete=True )
     name        = models.CharField(max_length=150)
     phone       = models.CharField(max_length=30)
     # dare = models.CharField(max_length=30)
@@ -45,7 +45,7 @@ RECORD_CHOISE = [
 ]
 
 class Record (models.Model):
-    patient_id  = models.ForeignKey(Patient, null =True ,on_delete=True )
+    patient_id  = models.ForeignKey(Patient,related_name="record", null =True ,on_delete=True )
     key         = models.IntegerField(choices=RECORD_CHOISE)
     value       = models.TextField(verbose_name= None )
     time        = models.DateTimeField(auto_now=True)
@@ -57,4 +57,4 @@ class Record (models.Model):
 
     def __str__(self):
         return self.start_date
-    
+     

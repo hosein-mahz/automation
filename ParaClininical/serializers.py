@@ -5,10 +5,15 @@ from patient.models import Patient
 from Services.models import Services
 
 
-class Operation_recordSerializer(serializers.HyperlinkedModelSerializer):
-    patient_id = serializers.RelatedField(source='Patient', read_only=True)
-    physician_id = serializers.RelatedField(source='physician', read_only=True)
-    
+class Operation_recordSerializer(serializers.ModelSerializer):
+    hoteling               = serializers.StringRelatedField(many=True)
+    device_order           = serializers.StringRelatedField(many=True)
+    consumable_order       = serializers.StringRelatedField(many=True)
+    classtreatment_order   = serializers.StringRelatedField(many=True)
+    medecine_order         = serializers.StringRelatedField(many=True)
+    Service_list           = serializers.StringRelatedField(many=True)
+    invoice           = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Operation_record
         fields = [
@@ -16,10 +21,17 @@ class Operation_recordSerializer(serializers.HyperlinkedModelSerializer):
             'patient_id', 
             'title',
             'data',
-            'id'
+            'id',
+            'Service_list',
+            'medecine_order',
+            'classtreatment_order',
+            'consumable_order',
+            'device_order',
+            'Hoteling',
+            'invoice'
             ]
 
-class Service_listSerializer(serializers.HyperlinkedModelSerializer):
+class Service_listSerializer(serializers.ModelSerializer):
     service_id = serializers.RelatedField(source='service', read_only=True)
     Operation_record_id = serializers.RelatedField(source='Operation_record', read_only=True)
     
@@ -33,7 +45,7 @@ class Service_listSerializer(serializers.HyperlinkedModelSerializer):
             'id'
             ]
 
-class Medecine_orderSerializer(serializers.HyperlinkedModelSerializer):
+class Medecine_orderSerializer(serializers.ModelSerializer):
     Operation_record_id = serializers.RelatedField(source='Operation_record', read_only=True)
     # service_id = serializers.RelatedField(source='service', read_only=True)
     
@@ -48,7 +60,7 @@ class Medecine_orderSerializer(serializers.HyperlinkedModelSerializer):
             'id'
             ]
             
-class Classtreatment_orderSerializer(serializers.HyperlinkedModelSerializer):
+class Classtreatment_orderSerializer(serializers.ModelSerializer):
     Operation_record_id = serializers.RelatedField(source='Operation_record', read_only=True)
     # service_id = serializers.RelatedField(source='service', read_only=True)
     
@@ -63,7 +75,7 @@ class Classtreatment_orderSerializer(serializers.HyperlinkedModelSerializer):
             'id'
             ]
 
-class Consumable_orderSerializer(serializers.HyperlinkedModelSerializer):
+class Consumable_orderSerializer(serializers.ModelSerializer):
     # consumable_id = serializers.RelatedField(source='service', read_only=True)
     Operation_record_id = serializers.RelatedField(source='Operation_record', read_only=True)
     
@@ -77,7 +89,7 @@ class Consumable_orderSerializer(serializers.HyperlinkedModelSerializer):
             'id'
             ]
             
-class device_orderSerializer(serializers.HyperlinkedModelSerializer):
+class device_orderSerializer(serializers.ModelSerializer):
     Operation_record_id = serializers.RelatedField(source='Operation_record', read_only=True)
     
     class Meta:
@@ -90,7 +102,7 @@ class device_orderSerializer(serializers.HyperlinkedModelSerializer):
             'id'
             ]
 
-class HotelingSerializer(serializers.HyperlinkedModelSerializer):
+class HotelingSerializer(serializers.ModelSerializer):
     Operation_record_id = serializers.RelatedField(source='Operation_record', read_only=True)
     
     class Meta:
